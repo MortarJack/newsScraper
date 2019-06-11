@@ -1,0 +1,12 @@
+<button onClick="location.href=location.href">Refresh Articles</button>
+
+<div class="article-list">
+    {{#each data}}
+    <div class="article-list-item">
+        <h2 class="article-list-title">
+            <a href="{{this.urlLink}}">{{this.articleTitle}}</a>
+        </h2>
+        <img src="{{this.articleImage}}" alt="" class="article-list-image">
+    </div>
+    {{/each}}
+</div>
