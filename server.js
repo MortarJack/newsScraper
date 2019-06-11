@@ -9,14 +9,13 @@ var exphbs = require("express-handlebars");
 var cryptoNewsModel = require("./cryptoModel");
 var PORT = 8082;
 
-// If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/ty_db";
-mongoose.connect(MONGODB_URI, {useNewUrlParser: true});
+const mongoDB = process.env.mongoDB || "mongodb://localhost/home";
+mongoose.connect(mongoDB, {useNewUrlParser: true});
 mongoose.set('useFindAndModify', false);
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
- console.log ("we're connected!")
+ console.log ("Connected.")
 });
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
